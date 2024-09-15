@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Genome Research Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        code, pre {
+            background-color: #ecf0f1;
+            padding: 10px;
+            display: block;
+            border-left: 4px solid #2c3e50;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight {
+            font-weight: bold;
+        }
+
+        .author {
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h1>Cancer Genome Research Plan</h1>
+    <p class="author">M5董宇光</p>
+
+    <h2>Objective</h2>
+    <p>Analyze the mRNA expression in cancer cells, in hope of further understanding the pathogenesis of cancer at the molecular level.</p>
+    <ul>
+        <li>Looking for driver mutation, translocation, or overexpression that are not yet identified.</li>
+        <li>Looking for heterogeneity in a single cancer type or homogeneity between different cancer types.</li>
+    </ul>
+
+    <h2>Materials</h2>
+    <p>The most useful data should be mRNA sequencing (RNA-seq) data of cancer cells. It contains all the information for further analysis. Alternatively, the whole genome sequencing (WGS) or whole exome sequencing (WXS) data can serve for the same purpose, while RNA-seq data should be better since WGS contains mostly uncoded DNA, and WXS may miss some heavily mutated gene.</p>
+    <ul>
+        <li>
+            <span class="highlight">TCGA</span>: In TCGA, most cases have a file named "xxxx.rna_seq.genomic.gdc_realn.bam", for example, 
+            <a href="https://portal.gdc.cancer.gov/files/98b26b34-056d-439b-b1b7-2d17d258bad6" target="_blank">this file on TCGA</a>. Its access is controlled, so only authorized PI can download the data. It has the file extension of ".sam" or ".bam" and has the following format:
+            <pre>
+@SQ    SN:NC_000009    LN:10000000
+@PG    ID:vta    PN:vta    VN:0.0.1    CL:./align sequence.fna input1.fq input2.fq vta.sam
+SIM0000001    99    NC_000009    6616075    255    65M1I34M    =    6616520    545    TAGGGTGAAGGCCGCGTCCGTTTTTCAATAGTAACGTTGTGACTTGGGTTCTGAGCGTGCTAATCCCCACTATAGGTTACGAGCGTAACTGGGGTCTAGA    *    aln:M65I1M8S1M25
+SIM0000001    147    NC_000009    6616520    255    100M    =    6616075    -545    TTGACGGAACACAATGACGGTCGTACGCCTCAGACAGTAGACACCTTCACTAGGTGTCAAACCGCGGTCTGCAGGCCCTGGGGCACTAGTAGCCACTTGA    *    aln:M95S1M4
+            </pre>
+        </li>
+        <li>
+            <span class="highlight">Lab</span>: If some labs are performing NGS by themselves, then they will either get the unmapped data or mapped data. The mapped data is exactly the ".sam" or ".bam" file explained above. The unmapped data has file extension of ".fastq" or ".fq" and has the following format:
+            <pre>
+@SIM0000001 1
+TAGGGTGAAGGCCGCGTCCGTTTTTCAATAGTAACGTTGTGACTTGGGTTCTGAGCGTGCTAATCCCCACTATAGGTTACGAGCGTAACTGGGGTCTAGA
++
+*
+@SIM0000002 1
+TCTAGTTATAATGACAAATGTCGCTAGTCCTCGGCAGCACCACTAGTCGTTGACTCCTGGGTAACAGGAATACGCTCGCACTCGGATTTCCCCCGGCAAC
++
+*
+            </pre>
+        </li>
+    </ul>
+
+    <h2>Methods</h2>
+    <p>Using the mRNA sequencing data, we can analyze the mutation, structural variation, expression profiling, etc., of cancer cells.</p>
+    <ul>
+        <li>
+            <span class="highlight">NGS mapping</span>: NGS data contains ~100 millions of short sequences each with ~100 base pairs. We need to map those sequences to a reference genome to know their positions. The ".sam" or ".bam" data on TCGA is already mapped; alternatively, we can map these data using our own algorithm if the data is unmapped, or to gain more accuracy and allow more customization. I have developed a NGS mapping algorithm, which uses count sort, suffix array, Burrows-Wheeler transform, FM index for the indexing part, and uses seeding, clustering, DP for the alignment part: <a href="https://github.com/hikarimusic/VTA">VTA Algorithm</a>
+        </li>
+        <li>
+            <span class="highlight">Analysis</span>: After mapping the NGS data, we can identify which gene these short sequences come from, and many analyses can be performed. First, we can examine whether there are single nucleotide variations (substitution, insertion, deletion) in these mRNA. Second, we can examine whether there are structural variations (translocation, inversion, alternative splicing) in these mRNA. Lastly, we can examine whether there are overexpression or underexpression of some genes. Combining these results, chances are that we can identify new driver mutations, sub-classify a single cancer type, or unite different cancer types based on gene expression.
+        </li>
+    </ul>
+
+</body>
+</html>
