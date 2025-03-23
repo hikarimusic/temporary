@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultrasound Pattern of Ovarian Cyst</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #005eb8;
+            color: white;
+            border-radius: 5px;
+        }
+        
+        header h1 {
+            margin-bottom: 10px;
+        }
+        
+        .presenter-info {
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+        
+        .classification-section {
+            background-color: #e6f3ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            border: 1px solid #cce5ff;
+        }
+        
+        .tohoku-table {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #005eb8;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .cyst-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .cyst-image {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .cyst-image img {
+            max-width: 100%;
+            max-height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .classification-section .cyst-image img {
+            max-width: 100%;
+            width: 50%;
+            max-height: none;
+        }
+        
+        .reference {
+            font-size: 0.8em;
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        .diagnosis-section {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border-left: 4px solid #005eb8;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        button {
+            padding: 10px 15px;
+            background-color: #005eb8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px 5px 10px 0;
+        }
+        
+        button:hover {
+            background-color: #004085;
+        }
+        
+        .classification-btn {
+            background-color: #28a745;
+        }
+        
+        .classification-btn:hover {
+            background-color: #218838;
+        }
+        
+        h2 {
+            color: #005eb8;
+            border-bottom: 2px solid #005eb8;
+            padding-bottom: 8px;
+        }
+        
+        h3 {
+            color: #0275d8;
+            margin-top: 20px;
+        }
+        
+        .navigation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        
+        .nav-button {
+            background-color: rgba(0, 94, 184, 0.8);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .reveal-all-button {
+            background-color: rgba(220, 53, 69, 0.8);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .classification-section {
+                padding: 10px;
+            }
+            
+            table {
+                font-size: 0.8em;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation removed as requested -->
+
+<!-- Replace the existing header with this code -->
+<style>
+    .header-container {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 25px 20px;
+        background-color: #005eb8;
+        color: white;
+        border-radius: 5px;
+    }
+    
+    .header-title {
+        margin-bottom: 20px;
+        font-size: 2em;
+    }
+    
+    .presenter-box {
+        background-color: rgba(255,255,255,0.15);
+        padding: 15px 25px;
+        border-radius: 5px;
+        margin: 0 auto 15px;
+        display: inline-block;
+        min-width: 300px;
+        max-width: 80%;
+        text-align: left;
+    }
+    
+    .presenter-info {
+        font-size: 1.2em;
+        font-weight: 500;
+        line-height: 1.5;
+        margin: 5px 0;
+    }
+    
+    .presenter-label {
+        font-weight: bold;
+        display: inline-block;
+        width: 100px;
+        text-align: right;
+        margin-right: 15px;
+    }
+</style>
+
+<header class="header-container">
+    <h1 class="header-title">Ultrasound Pattern of Ovarian Cyst</h1>
+    
+    <div class="presenter-box">
+        <div class="presenter-info">
+            <span class="presenter-label">Presenters:</span>
+            董宇光 楊承寯 蔡奇凝
+        </div>
+        
+        <div class="presenter-info">
+            <span class="presenter-label">Supervisor:</span>
+            吳晉睿
+        </div>
+        
+        <div class="presenter-info">
+            <span class="presenter-label">Affiliation:</span>
+            National Taiwan University School of Medicine
+        </div>
+    </div>
+</header>
+
+    <section id="classification" class="classification-section">
+        <h2>東大式卵巣腫瘍エコーパターン分類</h2>
+        <p><strong>Tokyo University Classification of Ovarian Tumor Ultrasound Patterns</strong></p>
+        
+        <div class="cyst-image">
+            <img src="https://primary-care.sysmex.co.jp/upload/disease/212/areaA1.jpg" alt="東大式卵巣腫瘍エコーパターン分類" >
+            <div class="reference">Reference: 「臨床医マニュアル　第5版」 編集:臨床医マニュアル編集委員会 Copyright:(c) Ishiyaku Publishers, Inc., 2016.</div>
+        </div>
+        
+        <h2>東大式での各パターンと組織との関係</h3>
+        <p><strong>Relationship between Echo Patterns and Histological Types</strong></p>
+        
+        <div class="tohoku-table">
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                <tr>
+                    <th>Histology</th>
+                    <th></th>
+                    <th>Ut.</th>
+                    <th colspan="2">I</th>
+                    <th colspan="2">II</th>
+                    <th colspan="3">III</th>
+                    <th colspan="2">IV</th>
+                    <th colspan="3">V</th>
+                    <th colspan="2">VI</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>MUC</th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>A</th>
+                    <th>B</th>
+                </tr>
+            <tbody>
+                <tr>
+                    <td>Ut.</td>
+                    <td>Myoma</td>
+                    <td>90</td>
+                    <td>5</td>
+                    <td></td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>20</td>
+                    <td>10</td>
+                    <td>10</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td rowspan="6">Ovary</td>
+                    <td>Serous</td>
+                    <td></td>
+                    <td>25</td>
+                    <td>30</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>10</td>
+                    <td>10</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>10</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Mucinous</td>
+                    <td></td>
+                    <td>10</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td>10</td>
+                    <td>60</td>
+                    <td>30</td>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td>10</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Endometrial</td>
+                    <td>5</td>
+                    <td>25</td>
+                    <td>35</td>
+                    <td>75</td>
+                    <td>60</td>
+                    <td>5</td>
+                    <td></td>
+                    <td>10</td>
+                    <td>15</td>
+                    <td></td>
+                    <td>15</td>
+                    <td>15</td>
+                    <td>15</td>
+                    <td>20</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Dermoid</td>
+                    <td></td>
+                    <td>10</td>
+                    <td></td>
+                    <td>5</td>
+                    <td>10</td>
+                    <td>85</td>
+                    <td>95</td>
+                    <td>75</td>
+                    <td>5</td>
+                    <td></td>
+                    <td>15</td>
+                    <td>15</td>
+                    <td>5</td>
+                    <td>15</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Other benign tumors</td>
+                    <td>5</td>
+                    <td>25</td>
+                    <td>30</td>
+                    <td>5</td>
+                    <td>15</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td></td>
+                    <td>5</td>
+                    <td>10</td>
+                    <td>15</td>
+                    <td>5</td>
+                    <td>15</td>
+                    <td>15</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Malignant</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>50</td>
+                    <td>30</td>
+                    <td>55</td>
+                    <td>55</td>
+                    <td>30</td>
+                    <td>80</td>
+                </tr>
+            </tbody>
+            </table>
+            <div class="reference">Note: Blank means less than 1%. Reference: 「臨床医マニュアル　第5版」 編集:臨床医マニュアル編集委員会 Copyright:(c) Ishiyaku Publishers, Inc., 2016.</div>
+        </div>
+    </section>
+
+    <h2 id="cyst-types">Ovarian Cyst Types</h2>
+
+    <section class="cyst-section">
+        <h2>Case 1</h2>
+        <div class="cyst-image">
+            <img src="https://radiologykey.com/wp-content/uploads/2016/03/A300568_1_En_5_Fig3_HTML.jpg" alt="Ovarian follicle ultrasound image">
+        </div>
+        <p class="reference">Reference: Radswiki T, Walizai T, Bell D, et al. Ovarian follicle. Reference article, Radiopaedia.org (Accessed on 23 Mar 2025) https://doi.org/10.53347/rID-15060</p>
+        
+        <button onclick="toggleDiagnosis('diagnosis1')">Toggle Diagnosis</button>
+        <button class="classification-btn" onclick="showClassification()">Show 東大式 Classification</button>
+        
+        <div id="diagnosis1" class="diagnosis-section hidden">
+            <h3>Ovarian Follicle</h3>
+            <h4>Intro</h4>
+            <p>An <strong>ovarian follicle</strong> (also known as a <strong>Graafian follicle</strong> in its mature state) is the basic unit of female reproductive biology and is composed of roughly spherical aggregations of cells and contains a single oocyte.</p>
+            
+            <h4>Ultrasound</h4>
+            <p>Following maturations under the development of gonadotropins, small follicles can be seen as small sonolucent rounded structures around the ovary. In the normal physiological state one of the follicles enlarges to ~1 cm to become a dominant follicle which grows further to ~2.5 cm. This is then called an ovarian follicular cyst.</p>
+        </div>
+    </section>
+
+    <section class="cyst-section">
+        <h2>Case 2</h2>
+        <div class="cyst-image">
+            <img src="https://prod-images-static.radiopaedia.org/images/58580247/0._big_gallery.jpeg" alt="Follicular cyst ultrasound image">
+        </div>
+        <p class="reference">Reference: Radswiki T, Sharma R, Bell D, et al. Ovarian follicular cyst. Reference article, Radiopaedia.org (Accessed on 23 Mar 2025) https://doi.org/10.53347/rID-13410</p>
+        
+        <button onclick="toggleDiagnosis('diagnosis2')">Toggle Diagnosis</button>
+        <button class="classification-btn" onclick="showClassification()">Show 東大式 Classification</button>
+        
+        <div id="diagnosis2" class="diagnosis-section hidden">
+            <h3>Follicular Cyst</h3>
+            <h4>Pathology</h4>
+            <p>They are a type of functional ovarian cyst and result from persistence of an unruptured Graafian follicle which then becomes larger in size.</p>
+            
+            <h4>Radiographic Features</h4>
+            <p>Ultrasound:</p>
+            <ul>
+                <li>Thin-walled and unilocular</li>
+                <li>Usually range around 3 to 8 cm in size
+                    <ul>
+                        <li>By definition, if &lt;3 cm it the "cyst" is termed an ovarian follicle rather than an ovarian follicular cyst</li>
+                    </ul>
+                </li>
+                <li>There is typically posterior acoustic enhancement and an absence of internal echoes</li>
+                <li>There should be no color flow, nodules, or any solid component.</li>
+            </ul>
+            
+            <h4>Treatment and Prognosis</h4>
+            <p>Small, simple presumed follicular cysts (&lt;5 cm) in premenopausal patients can be left alone and require neither surgery nor imaging follow-up. According to a consensus statement, yearly follow-up is suggested for cysts 5-7 cm, and large cysts (>7 cm) should ideally be assessed with MRI to exclude any subtle worrisome features, as it may be difficult to visualize these entirely with ultrasound.</p>
+            <p>Follicular cysts do not occur in postmenopausal women. A cystic ovarian lesion in a postmenopausal woman requires different follow-up (see ovarian cyst)</p>
+        </div>
+    </section>
+
+    <section class="cyst-section">
+        <h2>Case 3</h2>
+        <div class="cyst-image">
+            <img src="https://prod-images-static.radiopaedia.org/images/626559/1d9e26805c36fed1dd89008b3a3d43_big_gallery.jpg" alt="Endometrioma ultrasound image">
+        </div>
+        <p class="reference">Reference: Jones J, Le L, Sattar A, et al. Endometrioma. Reference article, Radiopaedia.org (Accessed on 23 Mar 2025) https://doi.org/10.53347/rID-9042</p>
+        
+        <button onclick="toggleDiagnosis('diagnosis3')">Toggle Diagnosis</button>
+        <button class="classification-btn" onclick="showClassification()">Show 東大式 Classification</button>
+        
+        <div id="diagnosis3" class="diagnosis-section hidden">
+            <h3>Endometrioma</h3>
+            <h4>Pathology</h4>
+            <p><strong>Endometriomas</strong>, also known as <strong>chocolate cysts</strong> or <strong>endometriotic cysts</strong>, are a localized form of endometriosis and are usually within the ovary. They are readily diagnosed on ultrasound, with most demonstrating classical radiographic features.</p>
+            
+            <h4>Ultrasound</h4>
+            <p>The appearances of endometriomas can be quite variable. The classical example is an avascular unilocular cyst containing low-level, homogeneous "ground-glass" like internal echoes, as a result of the hemorrhagic debris. This appearance occurs in 50% of cases. The kissing ovaries sign may be seen in case of bilateral endometriomas.</p>
+            
+            <h4>Treatment and Prognosis</h4>
+            <p>Although endometriomas are usually benign entities, there is an ~1% rate of malignant transformation. Endometrioid tumors of the ovary and clear cell ovarian carcinomas are the most common histological patterns seen. They are mostly seen in women >40 years after several years of latency, with endometriomas larger than 9 cm. Malignant transformation is uncommon in masses &lt;6 cm.</p>
+            <p>If not surgically excised, follow-up should be at least yearly. GnRH agonists may be used for medical management.</p>
+            <p>Endometriomas have the potential to decidualise during pregnancy resulting in the formation of vascularized, papillary projections (solid internal components with flow on color doppler). Although rare, these changes give an appearance mimicking malignancy and careful follow-up imaging is recommended.</p>
+            <p>Ovarian endometriomas carry a lower risk of ovarian torsion than other ovarian cysts due to their frequent association with adhesions.</p>
+        </div>
+    </section>
+
+    <section class="cyst-section">
+        <h2>Case 4</h2>
+        <div class="cyst-image">
+            <img src="https://prod-images-static.radiopaedia.org/images/2219005/49a9c00b765d267096b8c2c63dd5be_big_gallery.jpg" alt="Dermoid cyst ultrasound image">
+        </div>
+        <p class="reference">Reference: Gaillard F, Le L, Mahsoub M, et al. Mature cystic ovarian teratoma. Reference article, Radiopaedia.org (Accessed on 23 Mar 2025) https://doi.org/10.53347/rID-1808</p>
+        
+        <button onclick="toggleDiagnosis('diagnosis4')">Toggle Diagnosis</button>
+        <button class="classification-btn" onclick="showClassification()">Show 東大式 Classification</button>
+        
+        <div id="diagnosis4" class="diagnosis-section hidden">
+            <h3>Dermoid Cyst</h3>
+            <h4>Pathology</h4>
+            <p>Mature cystic teratomas are encapsulated tumors with mature tissue or organ components. They are composed of well-differentiated derivations from at least two of the three germ cell layers (i.e. ectoderm, mesoderm, and endoderm). They, therefore, contain developmentally mature skin complete with hair follicles and sweat glands, sometimes luxuriant clumps of long hair, and often pockets of sebum, blood, fat (93%), bone, nails, teeth, eyes, cartilage, and thyroid tissue. Typically their diameter is smaller than 10 cm, and rarely more than 15 cm. Real organoid structures (teeth, fragments of bone) may be present in ~30% of cases.</p>
+            
+            <h4>Ultrasound</h4>
+            <p>Ultrasound is the preferred imaging modality. Typically an ovarian dermoid is seen as a cystic adnexal mass with some mural components. Most lesions are unilocular.</p>
+            <p>The spectrum of sonographic features includes:</p>
+            <ul>
+                <li>Diffusely or partially echogenic mass with posterior sound attenuation owing to sebaceous material and hair within the cyst cavity
+                    <ul>
+                        <li>An echogenic interface at the edge of mass that obscures deep structures: the tip of the iceberg sign</li>
+                    </ul>
+                </li>
+                <li>Mural hyperechoic Rokitansky nodule (dermoid plug)</li>
+                <li>Echogenic, shadowing calcific or dental (tooth) components</li>
+                <li>The presence of fluid-fluid levels</li>
+                <li>Multiple thin, echogenic bands caused by the hair in the cyst cavity: the dot-dash pattern (dermoid mesh)</li>
+                <li>Color Doppler: no internal vascularity
+                    <ul>
+                        <li>Internal vascularity requires further workup to exclude a malignant lesion</li>
+                    </ul>
+                </li>
+                <li>Intracystic floating balls sign is uncommon but characteristic</li>
+            </ul>
+            
+            <h4>Treatment and Prognosis</h4>
+            <p>Mature ovarian teratomas are slow-growing (1-2 mm a year) and, therefore, some advocate non-surgical management. Larger lesions are often surgically removed. Many recommend annual follow-up for lesions &lt;7 cm to monitor growth, beyond which resection is advised.</p>
+        </div>
+    </section>
+
+    <section class="cyst-section">
+        <h2>Case 5</h2>
+        <div class="cyst-image">
+            <img src="https://prod-images-static.radiopaedia.org/images/1771604/3ea63433d0315676d9ca8521dc834b.JPG" alt="Ovarian serous cystadenoma ultrasound image">
+        </div>
+        <p class="reference">Reference: Weerakkody Y, Walizai T, Machang'a K, et al. Ovarian serous cystadenoma. Reference article, Radiopaedia.org (Accessed on 23 Mar 2025) https://doi.org/10.53347/rID-14473</p>
+        
+        <button onclick="toggleDiagnosis('diagnosis5')">Toggle Diagnosis</button>
+        <button class="classification-btn" onclick="showClassification()">Show 東大式 Classification</button>
+        
+        <div id="diagnosis5" class="diagnosis-section hidden">
+            <h3>Ovarian Serous Cystadenoma</h3>
+            <h4>Pathology</h4>
+            <p><strong>Ovarian serous cystadenomas</strong> are a type of benign ovarian epithelial tumor at the benign end of the spectrum of ovarian serous tumors.</p>
+            
+            <h4>Ultrasound</h4>
+            <ul>
+                <li>Usually seen as a unilocular cystic/anechoic adnexal lesion</li>
+                <li>Papillary projections are absent
+                    <ul>
+                        <li>If there is any wall irregularity, it is thin, with an acute angle with the cyst wall and has a regular surface</li>
+                    </ul>
+                </li>
+                <li>Some lesions may contain sonographically detectable septations</li>
+                <li>No flow is detected on color doppler</li>
+                <li>Higher resistive and pulsatility indices on pulsed doppler when compared to malignant neoplasm</li>
+            </ul>
+            
+            <h4>Treatment and Prognosis</h4>
+            <p>They are benign lesions usually with a good prognosis. However, ovarian cystadenocarcinoma is thought to result from ovarian cystadenoma evolution into serous borderline tumors and invasive carcinoma. Surgical options include resection or oophorectomy. Cystadenomas do not recur following oophorectomy.</p>
+        </div>
+    </section>
+
+    <section class="cyst-section">
+        <h2>Case 6</h2>
+        <div class="cyst-image">
+            <img src="https://prod-images-static.radiopaedia.org/images/36401604/91b01ff9f54283477c8d1c699d620f_big_gallery.jpeg" alt="Ovarian mucinous cystadenoma ultrasound image">
+        </div>
+        <p class="reference">Reference: Weerakkody Y, Niknejad M, Shah V, et al. Ovarian mucinous cystadenoma. Reference article, Radiopaedia.org (Accessed on 23 Mar 2025) https://doi.org/10.53347/rID-13390</p>
+        
+        <button onclick="toggleDiagnosis('diagnosis6')">Toggle Diagnosis</button>
+        <button class="classification-btn" onclick="showClassification()">Show 東大式 Classification</button>
+        
+        <div id="diagnosis6" class="diagnosis-section hidden">
+            <h3>Ovarian Mucinous Cystadenoma</h3>
+            <h4>Pathology</h4>
+            <p><strong>Mucinous cystadenoma of the ovary</strong> is at the benign end of the spectrum of mucin-containing epithelial ovarian tumors.</p>
+            
+            <h4>Radiographic Features</h4>
+            <p>Mucinous cystadenomas tend to be larger than serous cystadenomas at presentation. Bilaterality is rare (2-5%). Mural calcification is more common than serous tumors.</p>
+            <p>Ultrasound:</p>
+            <ul>
+                <li>Typically large cystic adnexal mass</li>
+                <li>Multilocular with numerous thin septations</li>
+                <li>Loculations may contain low-level internal echogenicity due to increased mucin content
+                    <ul>
+                        <li>Different locules may contain various degrees of echogenicity</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h4>Treatment and Prognosis</h4>
+            <p>A mucinous cystadenoma is benign with excellent prognosis (cf. borderline mucinous tumors of the ovary or mucinous cystadenocarcinoma of the ovary). Nonetheless, they are frequently surgically excised for histological confirmation of benignity, and due to mass effect of the large tumors.</p>
+        </div>
+    </section>
+
+    <section class="cyst-section">
+        <h2>Case 7</h2>
+        <div class="cyst-image">
+            <img src="https://prod-images-static.radiopaedia.org/images/52903672/f0592a01e8790baff43ab858184e30_big_gallery.jpeg" alt="Ovarian serous cystadenocarcinoma ultrasound image">
+        </div>
+        <p class="reference">Reference: Radswiki T, Rasuli B, Niknejad M, et al. Ovarian serous cystadenocarcinoma. Reference article, Radiopaedia.org (Accessed on 23 Mar 2025) https://doi.org/10.53347/rID-14495</p>
+        
+        <button onclick="toggleDiagnosis('diagnosis7')">Toggle Diagnosis</button>
+        <button class="classification-btn" onclick="showClassification()">Show 東大式 Classification</button>
+        
+        <div id="diagnosis7" class="diagnosis-section hidden">
+            <h3>Ovarian Serous Cystadenocarcinoma</h3>
+            <h4>Pathology</h4>
+            <p><strong>Ovarian serous cystadenocarcinoma</strong> is the malignant form of ovarian serous tumor, the most common type of ovarian epithelial tumor. It is the most common type of ovarian malignancy.</p>
+            
+            <h4>Ultrasound</h4>
+            <ul>
+                <li>Mixed cystic/solid lesion
+                    <ul>
+                        <li>More heterogeneous than a serous cystadenoma</li>
+                        <li>Papillary projections, thick septations, and/or solid components</li>
+                    </ul>
+                </li>
+                <li>Ascites
+                    <ul>
+                        <li>Concerning for peritoneal metastatic spread</li>
+                        <li>Discrete peritoneal deposits may be seen</li>
+                    </ul>
+                </li>
+                <li>Color Doppler is useful to confirm vascularity of the solid components
+                    <ul>
+                        <li>Quantitative parameters (resistive index (RI) and pulsatility index (PI)) do not reliably predict malignancy</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="cyst-section">
+        <h2>Case 8</h2>
+        <div class="cyst-image">
+            <img src="https://radiologykey.com/wp-content/uploads/2016/09/A301939_1_En_16_Fig1_HTML.jpg" alt="Ovarian clear cell carcinoma ultrasound image">
+        </div>
+        <p class="reference">Reference: Weerakkody Y, Knipe H, Sattar A, et al. Ovarian clear cell carcinoma. Reference article, Radiopaedia.org (Accessed on 23 Mar 2025) https://doi.org/10.53347/rID-13532</p>
+        
+        <button onclick="toggleDiagnosis('diagnosis8')">Toggle Diagnosis</button>
+        <button class="classification-btn" onclick="showClassification()">Show 東大式 Classification</button>
+        
+        <div id="diagnosis8" class="diagnosis-section hidden">
+            <h3>Ovarian Clear Cell Carcinomas</h3>
+            <h4>Pathology</h4>
+            <p><strong>Ovarian clear cell carcinomas</strong> are a rare, aggressive, malignant ovarian epithelial tumor subtype.</p>
+            
+            <h4>Imaging Features</h4>
+            <p>Common imaging findings in ovarian clear cell carcinoma include a unilocular or large cyst with one or more solid nodular protrusions into the cavity.</p>
+        </div>
+    </section>
+
+    <!-- Modal for displaying classification -->
+    <div id="classificationModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7);">
+        <div style="background-color: white; margin: 5% auto; padding: 20px; border: 1px solid #888; width: 90%; max-width: 1000px; position: relative;">
+            <span onclick="closeClassification()" style="position: absolute; right: 20px; top: 10px; color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+            <h2>東大式卵巣腫瘍エコーパターン分類</h2>
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="https://primary-care.sysmex.co.jp/upload/disease/212/areaA1.jpg" alt="東大式卵巣腫瘍エコーパターン分類" style="max-width: 100%;">
+            </div>
+            
+            <h3>東大式での各パターンと組織との関係</h3>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                    <tr>
+                        <th>Histology</th>
+                        <th></th>
+                        <th>Ut.</th>
+                        <th colspan="2">I</th>
+                        <th colspan="2">II</th>
+                        <th colspan="3">III</th>
+                        <th colspan="2">IV</th>
+                        <th colspan="3">V</th>
+                        <th colspan="2">VI</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>MUC</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                        <th>A</th>
+                        <th>B</th>
+                    </tr>
+                <tbody>
+                    <tr>
+                        <td>Ut.</td>
+                        <td>Myoma</td>
+                        <td>90</td>
+                        <td>5</td>
+                        <td></td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>20</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6">Ovary</td>
+                        <td>Serous</td>
+                        <td></td>
+                        <td>25</td>
+                        <td>30</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>10</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Mucinous</td>
+                        <td></td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td></td>
+                        <td></td>
+                        <td>10</td>
+                        <td>60</td>
+                        <td>30</td>
+                        <td>5</td>
+                        <td></td>
+                        <td></td>
+                        <td>10</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Endometrial</td>
+                        <td>5</td>
+                        <td>25</td>
+                        <td>35</td>
+                        <td>75</td>
+                        <td>60</td>
+                        <td>5</td>
+                        <td></td>
+                        <td>10</td>
+                        <td>15</td>
+                        <td></td>
+                        <td>15</td>
+                        <td>15</td>
+                        <td>15</td>
+                        <td>20</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Dermoid</td>
+                        <td></td>
+                        <td>10</td>
+                        <td></td>
+                        <td>5</td>
+                        <td>10</td>
+                        <td>85</td>
+                        <td>95</td>
+                        <td>75</td>
+                        <td>5</td>
+                        <td></td>
+                        <td>15</td>
+                        <td>15</td>
+                        <td>5</td>
+                        <td>15</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Other benign tumors</td>
+                        <td>5</td>
+                        <td>25</td>
+                        <td>30</td>
+                        <td>5</td>
+                        <td>15</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td></td>
+                        <td>5</td>
+                        <td>10</td>
+                        <td>15</td>
+                        <td>5</td>
+                        <td>15</td>
+                        <td>15</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Malignant</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>50</td>
+                        <td>30</td>
+                        <td>55</td>
+                        <td>55</td>
+                        <td>30</td>
+                        <td>80</td>
+                    </tr>
+                </tbody>
+                </table>
+                <p style="font-size: 0.8em; color: #666; margin-top: 10px;">Note: Blank means less than 1%.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDiagnosis(diagnosisId) {
+            const diagnosisElement = document.getElementById(diagnosisId);
+            if (diagnosisElement.classList.contains('hidden')) {
+                diagnosisElement.classList.remove('hidden');
+                event.target.textContent = 'Hide Diagnosis';
+            } else {
+                diagnosisElement.classList.add('hidden');
+                event.target.textContent = 'Toggle Diagnosis';
+            }
+        }
+        
+        function revealAllDiagnoses() {
+            const diagnoses = document.querySelectorAll('.diagnosis-section');
+            const buttons = document.querySelectorAll('.cyst-section > button');
+            
+            diagnoses.forEach(diagnosis => {
+                diagnosis.classList.remove('hidden');
+            });
+            
+            buttons.forEach(button => {
+                if (!button.classList.contains('classification-btn')) {
+                    button.textContent = 'Hide Diagnosis';
+                }
+            });
+        }
+        
+        function showClassification() {
+            document.getElementById('classificationModal').style.display = 'block';
+        }
+        
+        function closeClassification() {
+            document.getElementById('classificationModal').style.display = 'none';
+        }
+        
+        // Close modal if clicked outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('classificationModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+<!-- Add this section just before the closing </body> tag -->
+
+<section id="guessing-game" class="classification-section">
+    <h2>Ultrasound Guessing Game</h2>
+    <p>Test your diagnostic skills! Look at the ultrasound image and try to identify the ovarian pathology.</p>
+    <p><em>Reference: Jung, Sung Il. "Ultrasonography of ovarian masses using a pattern recognition approach." <strong>Ultrasonography</strong> 34.3 (2015): 173.</em></p>
+    
+    <div id="game-container" style="background-color: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-top: 20px;">
+        <div id="image-container" class="cyst-image">
+            <img id="game-image" src="" alt="Ovarian ultrasound image" style="max-height: 400px;">
+        </div>
+        
+        <div id="options-container" style="margin: 20px 0;">
+            <select id="diagnosis-select" style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ddd;">
+                <option value="">-- Select your diagnosis --</option>
+                <option value="Endometrioid carcinoma">Endometrioid carcinoma</option>
+                <option value="Mature cystic teratoma">Mature cystic teratoma (Dermoid cyst)</option>
+                <option value="Serous cystadenocarcinoma">Serous cystadenocarcinoma</option>
+                <option value="Clear cell carcinoma">Clear cell carcinoma</option>
+                <option value="Mucinous cystadenoma">Mucinous cystadenoma</option>
+                <option value="Tubo-ovarian abscess">Tubo-ovarian abscess</option>
+                <option value="Ovarian hyperstimulation syndrome">Ovarian hyperstimulation syndrome</option>
+                <option value="Mucinous cystadenocarcinoma">Mucinous cystadenocarcinoma</option>
+                <option value="Struma ovarii">Struma ovarii</option>
+                <option value="Granulosa cell tumor">Granulosa cell tumor</option>
+                <option value="Fibroma">Fibroma</option>
+                <option value="Brenner tumor">Brenner tumor</option>
+            </select>
+            <button id="guess-button" style="padding: 10px 15px; background-color: #005eb8; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Submit Diagnosis</button>
+            <button id="next-button" style="padding: 10px 15px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-left: 10px; display: none;">Next Case</button>
+        </div>
+        
+        <div id="feedback-container" style="display: none; padding: 15px; border-radius: 5px; margin-top: 15px;">
+            <h3 id="feedback-heading"></h3>
+            <p id="feedback-text"></p>
+            <p id="correct-answer"></p>
+            <p id="case-description"></p>
+        </div>
+        
+        <div id="game-stats" style="margin-top: 20px; font-weight: bold;">
+            <p>Case: <span id="current-case">1</span> of <span id="total-cases">13</span></p>
+            <p>Score: <span id="correct-score">0</span> correct</p>
+        </div>
+    </div>
+</section>
+
+<script>
+// Ultrasound cases data
+const ultrasoundCases = [
+    {
+        id: 1,
+        imageUrl: "https://www.researchgate.net/profile/Sung-Jung-14/publication/272377402/figure/fig4/AS:613951494696978@1523388851471/Endometrioid-carcinoma-on-background-of-endometriosis-in-a-44-year-old-woman_W640.jpg",
+        diagnosis: "Endometrioid carcinoma",
+        description: "Endometrioid carcinoma on background of endometriosis in a 44-year-old woman. Transvaginal ultrasonography shows several small polypoid lesions that have diffuse internal low echoes (arrows) along the wall of the cystic mass."
+    },
+    {
+        id: 2,
+        imageUrl: "https://www.researchgate.net/profile/Sung-Jung-14/publication/272377402/figure/fig1/AS:613951494688793@1523388851358/Mature-cystic-teratoma-in-a-37-year-old-woman-Transvaginal-ultrasonography-demonstrates_W640.jpg",
+        diagnosis: "Mature cystic teratoma",
+        description: "Mature cystic teratoma in a 37-year-old woman. Transvaginal ultrasonography demonstrates a complex echoic mass with a hyperechoic solid portion and posterior shadowing (arrows). The mass also contains multiple hyperechoic lines and dots."
+    },
+    {
+        id: 3,
+        imageUrl: "https://www.researchgate.net/profile/Sung-Jung-14/publication/272377402/figure/fig2/AS:613951494705171@1523388851388/Mature-cystic-teratoma-in-a-22-year-old-woman-Transvaginal-ultrasonography-demonstrates_W640.jpg",
+        diagnosis: "Mature cystic teratoma",
+        description: "Mature cystic teratoma in a 22-year-old woman. Transvaginal ultrasonography demonstrates a well defined hyperechoic nodule within the cystic mass, which proved to be fat after surgical resection (arrow)."
+    },
+    {
+        id: 4,
+        imageUrl: "https://www.researchgate.net/profile/Sung-Jung-14/publication/272377402/figure/fig3/AS:613951494688798@1523388851426/Serous-cystadenocarcinoma-in-a-59-year-old-woman-A-unilocular-cystic-mass-with-internal_W640.jpg",
+        diagnosis: "Serous cystadenocarcinoma",
+        description: "Serous cystadenocarcinoma in a 59-year-old woman. A unilocular cystic mass with internal papillary projection is seen on transvaginal ultrasonography (arrows)."
+    },
+    {
+        id: 5,
+        imageUrl: "https://www.researchgate.net/profile/Sung-Jung-14/publication/272377402/figure/fig6/AS:613951494709294@1523388851599/Clear-cell-carcinoma-in-a-60-year-old-woman-Transvaginal-ultrasonography-US-shows-a_W640.jpg",
+        diagnosis: "Clear cell carcinoma",
+        description: "Clear cell carcinoma in a 60-year-old woman. Transvaginal ultrasonography (US) shows a well defined cystic mass with a solid nodule which has a smooth round margin and seems to be slightly different from typical papillary projections (arrows). Doppler US demonstrated blood flow in the solid nodule (not shown)."
+    },
+    {
+        id: 6,
+        imageUrl: "https://www.researchgate.net/profile/Sung-Jung-14/publication/272377402/figure/fig5/AS:613951494684720@1523388851568/Mucinous-cystadenoma-in-a-47-year-old-woman-Transvaginal-ultrasonography-shows-a-thin_W640.jpg",
+        diagnosis: "Mucinous cystadenoma",
+        description: "Mucinous cystadenoma in a 47-year-old woman. Transvaginal ultrasonography shows a thin walled multilocular cystic mass with a regular septum."
+    },
+    {
+        id: 7,
+        imageUrl: "https://www.researchgate.net/profile/Sung-Jung-14/publication/272377402/figure/fig7/AS:613951494688818@1523388851668/Tubo-ovarian-abscess-in-a-35-year-old-woman-Transvaginal-ultrasonography-shows-a-thick_W640.jpg",
+        diagnosis: "Tubo-ovarian abscess",
+        description: "Tubo-ovarian abscess in a 35-year-old woman. Transvaginal ultrasonography shows a thick walled multilocular cystic mass with internal echogenic debris. Regular thickening of the outer wall and the septum of the cystic mass should be noted (arrows)."
+    },
+    {
+        id: 8,
+        imageUrl: "https://www.researchgate.net/profile/Sung-Jung-14/publication/272377402/figure/fig8/AS:613951494688826@1523388851722/Ovarian-hyperstimulation-syndrome-in-a-26-year-old-woman-Transabdominal-ultrasonography_W640.jpg",
+        diagnosis: "Ovarian hyperstimulation syndrome",
+        description: "Ovarian hyperstimulation syndrome in a 26-year-old woman. Transabdominal ultrasonography shows a markedly enlarged right ovary with multiple large follicles located in the ovarian cortex. The left ovary had a similar appearance (not shown)."
+    },
+    {
+        id: 9,
+        imageUrl: "https://www.researchgate.net/profile/Sung-Jung-14/publication/272377402/figure/fig10/AS:613951494705184@1523388851802/Mucinous-cystadenocarcinoma-in-a-65-year-old-woman-Transvaginal-ultrasonography-shows-a_W640.jpg",
+        diagnosis: "Mucinous cystadenocarcinoma",
+        description: "Mucinous cystadenocarcinoma in a 65-year-old woman. Transvaginal ultrasonography shows a multilocular cystic mass with large papillary projections (arrow)."
+    },
+    {
+        id: 10,
+        imageUrl: "https://www.researchgate.net/profile/Sung-Jung-14/publication/272377402/figure/fig9/AS:613951494688831@1523388851769/Struma-ovarii-in-a-37-year-old-woman-Transvaginal-ultrasonography-shows-a-multilocular_W640.jpg",
+        diagnosis: "Struma ovarii",
+        description: "Struma ovarii in a 37-year-old woman. Transvaginal ultrasonography shows a multilocular cystic mass and internal solid components with various echoes (arrows)."
+    },
+    {
+        id: 11,
+        imageUrl: "https://www.researchgate.net/profile/Sung-Jung-14/publication/272377402/figure/fig11/AS:613951494705190@1523388851835/Granulosa-cell-tumor-in-a-46-year-old-woman-Transvaginal-ultrasonography-reveals-a_W640.jpg",
+        diagnosis: "Granulosa cell tumor",
+        description: "Granulosa cell tumor in a 46-year-old woman. Transvaginal ultrasonography reveals a multilocular solid mass. This tumor has mainly solid components, some with and some without a multilocular cystic appearance."
+    },
+    {
+        id: 12,
+        imageUrl: "https://www.researchgate.net/profile/Sung-Jung-14/publication/272377402/figure/fig12/AS:613951494697002@1523388851884/Fibroma-in-a-50-year-old-woman-Transvaginal-ultrasonography-shows-a-homogeneously_W640.jpg",
+        diagnosis: "Fibroma",
+        description: "Fibroma in a 50-year-old woman. Transvaginal ultrasonography shows a homogeneously hypoechoic solid mass (arrows) with strong posterior shadowing."
+    },
+    {
+        id: 13,
+        imageUrl: "https://www.researchgate.net/profile/Sung-Jung-14/publication/272377402/figure/fig13/AS:613951494713386@1523388851911/Brenner-tumor-in-a-49-year-old-woman-Transvaginal-ultrasonography-shows-a-hypoechoic_W640.jpg",
+        diagnosis: "Brenner tumor",
+        description: "Brenner tumor in a 49-year-old woman. Transvaginal ultrasonography shows a hypoechoic solid mass with punctate echogenic foci (arrows)."
+    }
+];
+
+// Game state variables
+let randomizedCases = [];
+let currentCaseIndex = 0;
+let correctAnswers = 0;
+
+// DOM elements
+const gameImage = document.getElementById('game-image');
+const diagnosisSelect = document.getElementById('diagnosis-select');
+const guessButton = document.getElementById('guess-button');
+const nextButton = document.getElementById('next-button');
+const feedbackContainer = document.getElementById('feedback-container');
+const feedbackHeading = document.getElementById('feedback-heading');
+const feedbackText = document.getElementById('feedback-text');
+const correctAnswer = document.getElementById('correct-answer');
+const caseDescription = document.getElementById('case-description');
+const currentCaseElement = document.getElementById('current-case');
+const totalCasesElement = document.getElementById('total-cases');
+const correctScoreElement = document.getElementById('correct-score');
+
+// Fisher-Yates shuffle algorithm
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// Initialize game
+function initGame() {
+    randomizedCases = shuffleArray([...ultrasoundCases]);
+    currentCaseIndex = 0;
+    correctAnswers = 0;
+    
+    totalCasesElement.textContent = randomizedCases.length;
+    correctScoreElement.textContent = correctAnswers;
+    
+    showCurrentCase();
+}
+
+// Show current case
+function showCurrentCase() {
+    const currentCase = randomizedCases[currentCaseIndex];
+    gameImage.src = currentCase.imageUrl;
+    currentCaseElement.textContent = currentCaseIndex + 1;
+    
+    // Reset UI state
+    diagnosisSelect.value = "";
+    feedbackContainer.style.display = 'none';
+    guessButton.style.display = 'inline-block';
+    nextButton.style.display = 'none';
+}
+
+// Check diagnosis
+function checkDiagnosis() {
+    const selectedDiagnosis = diagnosisSelect.value;
+    const currentCase = randomizedCases[currentCaseIndex];
+    
+    if (selectedDiagnosis === "") {
+        alert("Please select a diagnosis!");
+        return;
+    }
+    
+    const isCorrect = selectedDiagnosis === currentCase.diagnosis;
+    
+    if (isCorrect) {
+        correctAnswers++;
+        correctScoreElement.textContent = correctAnswers;
+        feedbackHeading.textContent = "Correct!";
+        feedbackContainer.style.backgroundColor = "#d4edda";
+        feedbackContainer.style.borderLeft = "4px solid #28a745";
+    } else {
+        feedbackHeading.textContent = "Incorrect";
+        feedbackContainer.style.backgroundColor = "#f8d7da";
+        feedbackContainer.style.borderLeft = "4px solid #dc3545";
+    }
+    
+    feedbackText.textContent = `You selected: ${selectedDiagnosis}`;
+    correctAnswer.textContent = `Correct diagnosis: ${currentCase.diagnosis}`;
+    caseDescription.textContent = currentCase.description;
+    
+    feedbackContainer.style.display = 'block';
+    guessButton.style.display = 'none';
+    
+    if (currentCaseIndex < randomizedCases.length - 1) {
+        nextButton.style.display = 'inline-block';
+    } else {
+        nextButton.textContent = "Game Complete! Restart?";
+        nextButton.style.display = 'inline-block';
+    }
+}
+
+// Next case
+function nextCase() {
+    if (currentCaseIndex < randomizedCases.length - 1) {
+        currentCaseIndex++;
+        showCurrentCase();
+    } else {
+        // Game complete
+        if (confirm(`Game complete! Your score: ${correctAnswers}/${randomizedCases.length}. Would you like to play again?`)) {
+            initGame();
+        }
+    }
+}
+
+// Event listeners
+guessButton.addEventListener('click', checkDiagnosis);
+nextButton.addEventListener('click', nextCase);
+
+// Initialize game on load
+window.addEventListener('load', initGame);
+</script>
+</body>
+</html>
