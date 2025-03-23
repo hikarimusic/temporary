@@ -913,8 +913,11 @@
     <p><em>Reference: Jung, Sung Il. "Ultrasonography of ovarian masses using a pattern recognition approach." <strong>Ultrasonography</strong> 34.3 (2015): 173.</em></p>
     
     <div id="game-container" style="background-color: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-top: 20px;">
-        <div id="image-container" class="cyst-image">
-            <img id="game-image" src="" alt="Ovarian ultrasound image" style="max-height: 400px;">
+        <div id="image-container" class="cyst-image" style="min-height: 200px; display: flex; align-items: center; justify-content: center;">
+            <img id="game-image" src="" alt="Ovarian ultrasound image" style="max-height: 400px; max-width: 100%; object-fit: contain;">
+            <div id="loading-indicator" style="display: none; text-align: center;">
+                <p>Loading image...</p>
+            </div>
         </div>
         
         <div id="options-container" style="margin: 20px 0;">
@@ -952,6 +955,33 @@
 </section>
 
 <script>
+// Ensure mobile devices load images properly
+document.addEventListener('DOMContentLoaded', function() {
+    // Force HTTPS for all image URLs to avoid mixed content issues
+    const forceHttps = (url) => {
+        return url.replace('http://', 'https://');
+    };
+    
+    // Add image preloading function
+    function preloadImage(url) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve(url);
+            img.onerror = () => reject(url);
+            img.src = url;
+        });
+    }
+    
+    // Preload all images in background after page loads
+    setTimeout(() => {
+        ultrasoundCases.forEach(caseData => {
+            preloadImage(caseData.imageUrl).catch(url => {
+                console.log('Failed to preload: ' + url);
+            });
+        });
+    }, 2000);
+});
+
 // Ultrasound cases data
 const ultrasoundCases = [
     {
@@ -1077,7 +1107,6 @@ function initGame() {
 // Show current case
 function showCurrentCase() {
     const currentCase = randomizedCases[currentCaseIndex];
-    gameImage.src = currentCase.imageUrl;
     currentCaseElement.textContent = currentCaseIndex + 1;
     
     // Reset UI state
@@ -1085,6 +1114,29 @@ function showCurrentCase() {
     feedbackContainer.style.display = 'none';
     guessButton.style.display = 'inline-block';
     nextButton.style.display = 'none';
+    
+    // Show loading indicator and hide image until it's loaded
+    const loadingIndicator = document.getElementById('loading-indicator');
+    loadingIndicator.style.display = 'block';
+    gameImage.style.display = 'none';
+    
+    // Load the image
+    gameImage.onload = function() {
+        loadingIndicator.style.display = 'none';
+        gameImage.style.display = 'block';
+    };
+    
+    gameImage.onerror = function() {
+        loadingIndicator.style.display = 'block';
+        loadingIndicator.innerHTML = '<p>Error loading image. Tap to retry.</p>';
+        loadingIndicator.style.cursor = 'pointer';
+        loadingIndicator.onclick = function() {
+            showCurrentCase(); // Try loading again
+        };
+    };
+    
+    // Set the image source after setting up event handlers
+    gameImage.src = currentCase.imageUrl;
 }
 
 // Check diagnosis
