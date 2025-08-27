@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microfluidic Oxygenators: Next-Generation Artificial Lung Technology</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .slide {
+            min-height: 100vh;
+            padding: 60px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .slide.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        .slide h2 {
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #4facfe;
+            text-align: center;
+            position: relative;
+        }
+
+        .slide h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 2px;
+        }
+
+        .slide h3 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin: 30px 0 20px 0;
+            color: #00f2fe;
+        }
+
+        .slide h4 {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+            color: #87ceeb;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(79, 172, 254, 0.2);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.2) 0%, rgba(0, 242, 254, 0.2) 100%);
+            border: 2px solid rgba(79, 172, 254, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #000;
+            padding: 15px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(79, 172, 254, 0.1);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            margin: 15px 0;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            background: rgba(79, 172, 254, 0.15);
+            transform: translateX(10px);
+        }
+
+        .advantage {
+            border-left-color: #00ff87;
+        }
+
+        .challenge {
+            border-left-color: #ff6b6b;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+        }
+
+        .timeline-year {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .navigation {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: #4facfe;
+            transform: scale(1.5);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            transition: width 0.3s ease;
+            z-index: 1001;
+        }
+
+        .intro-animation {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .intro-animation h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .intro-animation p {
+            font-size: 1.3em;
+            color: #87ceeb;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(79, 172, 254, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .author-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(79, 172, 254, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .author-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(79, 172, 254, 0.2);
+        }
+
+        .author-card h3 {
+            font-size: 1.2em;
+            color: #87ceeb;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .author-name {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #4facfe;
+        }
+
+        .radical-vision {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(79, 172, 254, 0.3) 100%);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .radical-vision::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .innovation-number {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #000;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        @media (max-width: 768px) {
+            .innovation-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .citation {
+            font-size: 0.9em;
+            color: #87ceeb;
+            font-style: italic;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            border-left: 3px solid #4facfe;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid rgba(79, 172, 254, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #4facfe;
+            display: block;
+        }
+
+        .stat-label {
+            color: #87ceeb;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid, .innovation-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .author-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .slide h1 {
+                font-size: 2.5em;
+            }
+            
+            .slide h2 {
+                font-size: 2em;
+            }
+            
+            .navigation {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+    
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="navigation" id="navigation"></div>
+
+    <!-- Slide 1: Title -->
+    <section class="slide" id="slide-1">
+        <div class="container">
+            <div class="intro-animation">
+                <h1>Microfluidic Oxygenators</h1>
+                <p>Next-Generation Artificial Lung Technology</p>
+                <div class="author-info">
+                    <div class="author-card">
+                        <h3>Presenter</h3>
+                        <div class="author-name">M6 董宇光</div>
+                    </div>
+                    <div class="author-card">
+                        <h3>Supervisor</h3>
+                        <div class="author-name">Prof. 陳益祥</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: Introduction -->
+    <section class="slide" id="slide-2">
+        <div class="container">
+            <h2>Introduction</h2>
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>What are Microfluidic Oxygenators?</h3>
+                    <p>Microfluidic oxygenators are an emerging class of artificial lung devices that use networks of microscale channels and ultrathin membranes to replicate the gas exchange function of natural lungs.</p>
+                </div>
+                <div class="content-box">
+                    <h3>Key Innovation</h3>
+                    <p>Unlike traditional hollow-fiber membrane oxygenators, microfluidic designs recapitulate key aspects of pulmonary microcirculation with capillary-sized blood pathways and efficient diffusion distances.</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>Why This Matters</h4>
+                <p>This biomimetic approach promises safer, more effective artificial lung support for patients with respiratory failure and for perfusing organs outside the body, addressing a critical need for better lung assist devices in intensive care and organ transplantation.</p>
+                <div class="citation">Astor, T. L., & Borenstein, J. T. (2022). The microfluidic artificial lung: Mimicking nature's blood path design to solve the biocompatibility paradox. Artif Organs, 46(7), 1227-1239.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Comparison Table -->
+    <section class="slide" id="slide-3">
+        <div class="container">
+            <h2>Hollow-Fiber vs Microfluidic Oxygenators</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Hollow-Fiber Oxygenator</th>
+                        <th>Microfluidic Oxygenator</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Flow Path</strong></td>
+                        <td>Bundled fibers, non-physiologic distribution</td>
+                        <td>Mimics capillary-branching network</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Membrane Thickness</strong></td>
+                        <td>Relatively thick; longer diffusion distance</td>
+                        <td>Ultra-thin membranes; shallow channels</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gas Transfer Efficiency</strong></td>
+                        <td>Good total capacity, moderate efficiency per area</td>
+                        <td>Higher per-area efficiency; thinner diffusion path</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Design & Volume</strong></td>
+                        <td>Bulkier, high blood priming volumes</td>
+                        <td>Compact, low blood volume devices</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Clot Risk</strong></td>
+                        <td>Higher due to potential flow stagnation</td>
+                        <td>Lower; smoother flow, physiological shear patterns</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scalability</strong></td>
+                        <td>Well suited to high flow clinical use</td>
+                        <td>Challenging to scale; few devices at clinical-relevant flow</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Clinical Use Stage</strong></td>
+                        <td>Widely used in ECMO and bypass</td>
+                        <td>Primarily experimental or prototype</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Slide 4: Technical Basis -->
+    <section class="slide" id="slide-4">
+        <div class="container">
+            <h2>Technical Basis</h2>
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>Conventional Approach</h3>
+                    <p>ECMO oxygenators use bundles of hollow fibers ~200–300 µm in diameter, requiring turbulent mixing for red blood cells to contact oxygen.</p>
+                </div>
+                <div class="content-box">
+                    <h3>Microfluidic Innovation</h3>
+                    <p>Employ micron-scale channels (tens of micrometers wide) separated by gas-permeable membranes, directly mimicking the lung's alveolar-capillary interface.</p>
+                </div>
+            </div>
+
+            <h3>Key Technical Advantages</h3>
+            <ul class="feature-list">
+                <li class="advantage"><strong>Physiologically Representative Flow:</strong> Mimic natural branching blood flow pathways and shear conditions, reducing thrombosis risk</li>
+                <li class="advantage"><strong>Higher Gas-Transfer Efficiency:</strong> Shallow channels and ultra-thin membranes drastically reduce diffusion distances</li>
+                <li class="advantage"><strong>Compact & Low Volume:</strong> Smaller blood prime volumes lower the impact on patient circulation</li>
+                <li class="advantage"><strong>Customizable Designs:</strong> Four-sided gas exchange chambers or branching networks enhance performance</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Material Innovation:</strong> Most devices are fabricated from biocompatible, gas-permeable materials such as poly(dimethylsiloxane) (PDMS) or silicone using photolithography and soft lithography techniques.</p>
+                <div class="citation">Performance and scaling effects in a multilayer microfluidic oxygenator. RSC Publishing, Lab on a Chip (2012).</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Current Developments -->
+    <section class="slide" id="slide-5">
+        <div class="container">
+            <h2>Current Developments (2018–2025)</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">2023</div>
+                <div>
+                    <h4>Clinical-Scale Breakthrough</h4>
+                    <p>Draper Laboratory demonstrated a multilayer, 3D-branching microfluidic oxygenator capable of supporting blood flows of ~750 mL/min - the highest reported for this technology and the first at clinical scale.</p>
+                    <div class="citation">Isenberg, B. C., et al. (2023). A clinical-scale microfluidic respiratory assist device with 3D branching vascular networks. Adv. Sci. 10(18): e2207455. Draper Laboratory.</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div>
+                    <h4>Neonatal Applications</h4>
+                    <p>Researchers reported a scaled-up microfluidic lung-assist device for neonatal use, achieving 30% increase in blood oxygen saturation at just 40 mL/min flow with potential to support infants up to 2 kg.</p>
+                    <div class="citation">Saraei, N., et al. (2024). Scaled-up microfluidic lung assist device for artificial placenta application with high gas exchange capacity. ACS Biomater. Sci. Eng. 10(7): 4612-4625.</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div>
+                    <h4>Manufacturing Innovations</h4>
+                    <p>Roll-to-roll (R2R) manufacturing demonstrated as scalable approach, with automated systems creating 15-layer devices that raised blood O₂ saturation from 70% to 95%.</p>
+                    <div class="citation">Zhang, A., et al. (2024). Roll-to-roll manufacturing of large surface area PDMS devices, and application to a microfluidic artificial lung. Lab on a Chip, 24(18): 3443-3455.</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2025</div>
+                <div>
+                    <h4>Silicon Membrane Success</h4>
+                    <p>6-hour neonatal lamb study showed silicon-membrane oxygenator ran with minimal heparin, exhibiting minimal clot deposition and no significant hemolysis.</p>
+                    <div class="citation">Blauvelt, D. G., et al. (2025). A silicon membrane microfluidic oxygenator for use as an artificial placenta with minimal anticoagulation. Bioeng. Transl. Med., e70037.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: Challenges -->
+    <section class="slide" id="slide-6">
+        <div class="container">
+            <h2>Research Frontiers & Challenges</h2>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>Scaling Challenges</h3>
+                    <ul class="feature-list">
+                        <li class="challenge">Reaching adult patient support (>4-5 L/min blood flow) remains difficult</li>
+                        <li class="challenge">Current prototypes achieve hundreds of mL/min but need further increases</li>
+                        <li class="challenge">Maintaining low pressure drop while increasing surface area</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>Biocompatibility Issues</h3>
+                    <ul class="feature-list">
+                        <li class="challenge">Preventing clot formation over extended run times</li>
+                        <li class="challenge">Minimizing inflammatory activation</li>
+                        <li class="challenge">Achieving operation with minimal anticoagulation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>Manufacturing Hurdles</h3>
+                    <ul class="feature-list">
+                        <li class="challenge">Producing large-area, multilayer devices reliably</li>
+                        <li class="challenge">Cost-effective manufacturing at clinical scale</li>
+                        <li class="challenge">Quality control for microscale features</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>Clinical Translation</h3>
+                    <ul class="feature-list">
+                        <li class="challenge">Extensive in vivo testing needed for long-term validation</li>
+                        <li class="challenge">System integration and monitoring</li>
+                        <li class="challenge">Regulatory pathway navigation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Revolutionary Innovations -->
+    <section class="slide" id="slide-7">
+        <div class="container">
+            <h2>Revolutionary Innovation Concepts</h2>
+            
+            <div class="innovation-grid">
+                <div class="content-box">
+                    <h3><span class="innovation-number">1</span>Graphene-Enhanced Hybrid Membranes</h3>
+                    <p><strong>Concept:</strong> Replace PDMS/silicone membranes with atomically thin graphene oxide (GO) or reduced graphene oxide (rGO) layers.</p>
+                    <ul class="feature-list">
+                        <li class="advantage">Extremely high gas transfer efficiency</li>
+                        <li class="advantage">Atom-thick layer minimizes diffusion distance</li>
+                        <li class="advantage">Functionalization improves hemocompatibility</li>
+                    </ul>
+                    <p><strong>Impact:</strong> Devices an order of magnitude thinner, smaller, and more efficient.</p>
+                </div>
+                
+                <div class="content-box">
+                    <h3><span class="innovation-number">2</span>Self-Cleaning Dynamic Microchannels</h3>
+                    <p><strong>Concept:</strong> Engineer channels with stimuli-responsive walls (thermo-responsive polymers, piezoelectric surfaces) that periodically deform or vibrate.</p>
+                    <ul class="feature-list">
+                        <li class="advantage">Prevents clot formation and fouling</li>
+                        <li class="advantage">Triggered by flow sensors detecting resistance</li>
+                        <li class="advantage">"Shakes loose" adhered platelets</li>
+                    </ul>
+                    <p><strong>Impact:</strong> Extends device lifespan from hours/days to weeks.</p>
+                </div>
+            </div>
+
+            <div class="innovation-grid">
+                <div class="content-box">
+                    <h3><span class="innovation-number">3</span>Gene-Edited Endothelial Networks</h3>
+                    <p><strong>Concept:</strong> Line microchannels with gene-edited endothelial cells (via CRISPR) resistant to clotting and inflammation.</p>
+                    <ul class="feature-list">
+                        <li class="advantage">Naturally regulate coagulation</li>
+                        <li class="advantage">Release nitric oxide and prostacyclin</li>
+                        <li class="advantage">Immune-evasive and prolong survival</li>
+                    </ul>
+                    <p><strong>Impact:</strong> Moves toward living artificial lung with minimal anticoagulation.</p>
+                </div>
+                
+                <div class="content-box">
+                    <h3><span class="innovation-number">4</span>Modular "Oxygenator-on-a-Chip"</h3>
+                    <p><strong>Concept:</strong> Credit-card sized modules connected in parallel or series like Lego blocks.</p>
+                    <ul class="feature-list">
+                        <li class="advantage">Scalable flow capacity (one for neonates, dozens for adults)</li>
+                        <li class="advantage">Simplified manufacturing and maintenance</li>
+                        <li class="advantage">Faulty modules easily swapped</li>
+                    </ul>
+                    <p><strong>Impact:</strong> Personalized oxygenation support tailored to patient needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 8: Ultimate Vision -->
+    <section class="slide" id="slide-8">
+        <div class="container">
+            <h2>Ultimate Innovation Vision</h2>
+            
+            <div class="innovation-grid">
+                <div class="content-box">
+                    <h3><span class="innovation-number">5</span>Oxygen Harvesting from Ambient Air</h3>
+                    <p><strong>Concept:</strong> Pair oxygenator with membrane-based oxygen concentrator (miniaturized PSA/VSA system) feeding ambient air.</p>
+                    <ul class="feature-list">
+                        <li class="advantage">Eliminates bottled O₂ dependence</li>
+                        <li class="advantage">Enables wearable artificial lungs</li>
+                        <li class="advantage">Perfect for home use and mobility</li>
+                    </ul>
+                    <p><strong>Impact:</strong> Transforms from ICU-only to true patient-mobility solutions.</p>
+                </div>
+                
+                <div class="content-box">
+                    <h3><span class="innovation-number">6</span>AI-Driven Smart Control</h3>
+                    <p><strong>Concept:</strong> Embed microsensors (pO₂, pCO₂, pressure, flow, clot detection) with AI-based control system.</p>
+                    <ul class="feature-list">
+                        <li class="advantage">Real-time adjustment to metabolic demand</li>
+                        <li class="advantage">Predicts clot formation before failure</li>
+                        <li class="advantage">Integrates with hospital EMRs</li>
+                    </ul>
+                    <p><strong>Impact:</strong> Autonomous devices with self-optimizing oxygen delivery.</p>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h3><span class="innovation-number">7</span>Bio-Inspired Fractal Architectures</h3>
+                <p><strong>Concept:</strong> Use 3D printing to replicate true fractal lung structures with alveolar sac-like expansions.</p>
+                <ul class="feature-list">
+                    <li class="advantage">Maximizes surface area while minimizing resistance</li>
+                    <li class="advantage">Closely mimics physiologic flow dynamics</li>
+                    <li class="advantage">Minimizes dead volume</li>
+                </ul>
+                <p><strong>Impact:</strong> Pushes performance closer to natural lung efficiency for full adult support.</p>
+            </div>
+
+            <div class="radical-vision">
+                <h3 style="font-size: 1.8em; margin-bottom: 20px;">🚀 Most Radical Vision</h3>
+                <p style="font-size: 1.3em; margin-bottom: 15px;"><strong>A wearable, graphene-enhanced, endothelialized microfluidic oxygenator with modular chips, powered by ambient air, and guided by AI.</strong></p>
+                <p style="font-size: 1.1em;">Such a system could replace ECMO entirely, acting as a <strong>portable artificial lung for chronic patients</strong> or a <strong>compact organ perfusion tool for transplantation.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 9: Conclusion -->
+    <section class="slide" id="slide-9">
+        <div class="container">
+            <h2>Conclusion & Impact</h2>
+            
+            <div class="highlight-box">
+                <h3>Revolutionary Potential</h3>
+                <p>Microfluidic oxygenators represent the convergence of microfluidics, biomaterials, and bio-inspired design to create artificial lungs that offer efficient gas exchange with minimal blood damage.</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>Current Status</h3>
+                    <ul class="feature-list">
+                        <li>Rapid advances in academia and industry</li>
+                        <li>Demonstrated viability from neonatal to near-clinical adult scales</li>
+                        <li>Multiple prototypes approaching clinical testing</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>Future Impact</h3>
+                    <ul class="feature-list">
+                        <li>Revolutionize care for respiratory failure patients</li>
+                        <li>Enable portable/wearable ECMO alternatives</li>
+                        <li>Dramatically improve organ preservation</li>
+                        <li>Transform transplantation outcomes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="intro-animation" style="padding: 50px 0;">
+                <p style="font-size: 1.5em; color: #4facfe;">The next few years will be critical as prototypes move into extensive preclinical and clinical testing, turning the promise of a "lab-on-a-chip" artificial lung into a lifesaving reality.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize navigation and scroll handling
+        const slides = document.querySelectorAll('.slide');
+        const navigation = document.getElementById('navigation');
+        const progressBar = document.getElementById('progressBar');
+
+        // Create navigation dots
+        slides.forEach((slide, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'nav-dot';
+            dot.addEventListener('click', () => scrollToSlide(index));
+            navigation.appendChild(dot);
+        });
+
+        const navDots = document.querySelectorAll('.nav-dot');
+
+        function updateProgress() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        }
+
+        function updateActiveSlide() {
+            const scrollTop = window.pageYOffset + window.innerHeight / 2;
+            
+            slides.forEach((slide, index) => {
+                const slideTop = slide.offsetTop;
+                const slideBottom = slideTop + slide.offsetHeight;
+                
+                if (scrollTop >= slideTop && scrollTop <= slideBottom) {
+                    navDots[index].classList.add('active');
+                    slide.classList.add('visible');
+                } else {
+                    navDots[index].classList.remove('active');
+                }
+                
+                // Add visible class for slides that are in viewport
+                if (scrollTop >= slideTop - window.innerHeight * 0.3) {
+                    slide.classList.add('visible');
+                }
+            });
+        }
+
+        function scrollToSlide(index) {
+            slides[index].scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            updateProgress();
+            updateActiveSlide();
+        });
+
+        window.addEventListener('load', () => {
+            updateActiveSlide();
+            // Make first slide visible immediately
+            slides[0].classList.add('visible');
+            navDots[0].classList.add('active');
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const activeIndex = Array.from(navDots).findIndex(dot => dot.classList.contains('active'));
+            
+            if (e.key === 'ArrowDown' && activeIndex < slides.length - 1) {
+                scrollToSlide(activeIndex + 1);
+            } else if (e.key === 'ArrowUp' && activeIndex > 0) {
+                scrollToSlide(activeIndex - 1);
+            }
+        });
+
+        // Smooth scroll for better UX
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
+</body>
+</html>
